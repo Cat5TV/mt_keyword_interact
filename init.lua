@@ -24,7 +24,7 @@ minetest.register_on_chat_message(function(name, message)
 				irc:say(("* %s%s"):format("", "player, "..name.." Read the rules and has been granted interact!"))
 			end
 
-			if minetest.setting_get_pos("alt_spawnpoint") then minetest.get_player_by_name(name):setpos(minetest.setting_get_pos("alt_spawnpoint")) end
+			--if minetest.setting_get_pos("alt_spawnpoint") then minetest.get_player_by_name(name):setpos(minetest.setting_get_pos("alt_spawnpoint")) end
 		else
 			if minetest.get_player_privs(name).interact then
 				minetest.chat_send_player(name,"You already have interact! It is only necessary to say the keyword once.")
@@ -33,7 +33,6 @@ minetest.register_on_chat_message(function(name, message)
 					notice.send(name, "You already have interact! It is only necessary to say the keyword once.")
 				end
 				
-				--if minetest.setting_get_pos("alt_spawnpoint") then minetest.get_player_by_name(name):setpos(minetest.setting_get_pos("alt_spawnpoint")) end
 			else
 				minetest.chat_send_player(name,"You have been prevented from obtaining the interact privilege. Contact a server administrator if you believe this to be in error.")
 				if minetest.get_modpath("notice") and mki_notice_enable == true then

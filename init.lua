@@ -2,7 +2,7 @@ minetest.register_privilege("nointeract", "Can enter keyword to get interact")
 
 -- load from config 
 mki_interact_keyword = minetest.setting_get("interact_keyword") or "iaccept"
-local keyword_privs = minetest.string_to_privs(minetest.setting_get("keyword_interact_privs") or "interact,shout,fast")
+local keyword_privs = minetest.string_to_privs(minetest.setting_get("keyword_interact_privs") or "interact,shout")
 local keyword_liveupdate = minetest.setting_getbool("interact_keyword_live_changing") or nil
 local teleport_msg = minetest.setting_get("mki_send_teleport_msg") or "You've been teleported back to spawn due to lacking interact." 
 local mki_notice_enable = minetest.setting_getbool("keyword_notice_on") or true
@@ -18,7 +18,7 @@ minetest.register_on_chat_message(function(name, message)
 				privs.nointeract = nil
 			minetest.set_player_privs(name, privs)
 
-			minetest.chat_send_all("<Server> player, "..name.." Read the rules and has been granted interact!")
+			minetest.chat_send_all("<Server> player, "..name.." read the rules and has been granted interact!")
 			minetest.log("action", "[autogranter] Player, " .. name .. " Was granted interact for keyword")
 			if minetest.get_modpath("irc") then
 				irc:say(("* %s%s"):format("", "player, "..name.." Read the rules and has been granted interact!"))

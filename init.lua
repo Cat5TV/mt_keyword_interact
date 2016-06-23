@@ -24,7 +24,7 @@ minetest.register_on_chat_message(function(name, message)
 				irc:say(("* %s%s"):format("", "player, "..name.." Read the rules and has been granted interact!"))
 			end
 
-			--if minetest.setting_get_pos("alt_spawnpoint") then minetest.get_player_by_name(name):setpos(minetest.setting_get_pos("alt_spawnpoint")) end
+			if minetest.setting_get_pos("tps_keyword_interact_spawnpoint") then minetest.get_player_by_name(name):setpos(minetest.setting_get_pos("tps_keyword_interact_spawnpoint")) end
 		else
 			if minetest.get_player_privs(name).interact then
 				minetest.chat_send_player(name,"You already have interact! It is only necessary to say the keyword once.")

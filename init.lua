@@ -55,7 +55,8 @@ minetest.register_on_chat_message(function(name, message)
 		or msg:find(mki_interact_keyword_spanish)
 		or msg:find(mki_interact_keyword_french)
 		or msg:find(mki_interact_keyword_german) then
-			message = 'Read the signs for help on how to gain interact.'
+			message = ""
+			minetest.chat_send_player(name,"DO NOT tell other players the keyword. If they need help, direct them to the signs.")
 			return message
 		end
 	end

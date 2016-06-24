@@ -2,6 +2,9 @@ minetest.register_privilege("nointeract", "Can enter keyword to get interact")
 
 -- load from config 
 mki_interact_keyword = minetest.setting_get("interact_keyword") or "iaccept"
+mki_interact_keyword_spanish = minetest.setting_get("interact_keyword_spanish") or "iaccept"
+mki_interact_keyword_french = minetest.setting_get("interact_keyword_french") or "iaccept"
+mki_interact_keyword_german = minetest.setting_get("interact_keyword_german") or "iaccept"
 local keyword_privs = minetest.string_to_privs(minetest.setting_get("keyword_interact_privs") or "interact,shout")
 local keyword_liveupdate = minetest.setting_getbool("interact_keyword_live_changing") or nil
 local teleport_msg = minetest.setting_get("mki_send_teleport_msg") or "You've been teleported back to spawn due to lacking interact." 
@@ -9,7 +12,11 @@ local mki_notice_enable = minetest.setting_getbool("keyword_notice_on") or true
 
 
 minetest.register_on_chat_message(function(name, message)
-	if string.gsub(message, " ", ""):lower() == mki_interact_keyword then
+	if string.gsub(message, " ", ""):lower() == mki_interact_keyword
+	or string.gsub(message, " ", ""):lower() == mki_interact_keyword_spanish
+	or string.gsub(message, " ", ""):lower() == mki_interact_keyword_french
+	or string.gsub(message, " ", ""):lower() == mki_interact_keyword_german
+	then
 		if minetest.get_player_privs(name).nointeract then
 			local privs = minetest.get_player_privs(name)
 				for priv, state in pairs(keyword_privs,privs) do

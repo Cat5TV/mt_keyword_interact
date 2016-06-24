@@ -48,6 +48,16 @@ minetest.register_on_chat_message(function(name, message)
 			end
 		end
 		return true
+	else
+		if not message then return end
+		local msg = message:lower()
+		if msg:find(mki_interact_keyword)
+		or msg:find(mki_interact_keyword_spanish)
+		or msg:find(mki_interact_keyword_french)
+		or msg:find(mki_interact_keyword_german) then
+			message = 'Read the signs for help on how to gain interact.'
+			return message
+		end
 	end
 end)
 

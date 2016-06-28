@@ -1,6 +1,7 @@
 #!/bin/bash
 # Call this script via cron to automatically change your interact keyword
 # The minimum time between update should be reasonable (eg., don't update more than once per hour)
+# On The Pixel Shadow servers, we have this run in our daily backup script (once per day)
 # Keep in mind this also updates tps_signs with the new keyword
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 

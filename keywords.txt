@@ -1,8 +1,6 @@
 shift
 pointer
 spring
-circuit
-pipeline
 carburetor
 labrador
 gleaming

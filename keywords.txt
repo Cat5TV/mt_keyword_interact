@@ -1,3 +1,5 @@
+picture
+clipping
 gleaming
 rattle
 abase
@@ -8,3 +10,7 @@ dagwood
 musical
 eyebrow
 snooker
+shrug
+coaster
+basket
+fireplace

@@ -5,8 +5,11 @@ local m = minetest.get_modpath("tps_keyword_interact")
 local f = io.open(m.. "/keyword.txt", "r")
 local data = f:read("*a")
 f:close()
-mki_interact_keyword = tostring(data) or "password"
+
+f_keyword = tostring(data) or "Nothing"
+mki_interact_keyword = f_keyword:gsub("^%c")
 minetest.register_on_joinplayer(function(player)
+	minetest.chat_send_all("The keyword is "..f_keyword)
 	minetest.chat_send_all("The keyword is "..mki_interact_keyword)
 end)
 

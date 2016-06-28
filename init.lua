@@ -1,10 +1,16 @@
 minetest.register_privilege("nointeract", "Can enter keyword to get interact")
 
+local m = minetest.get_modpath("tps_keyword_interact")
+local f = io.open(m.. "/keyword.txt", "r")
+local data = f:read("*a")
+f:close()
+if data then
+	mki_interact_keyword = tostring(data)
+else
+	minetest.chat_send_all("No key word found. Please let the server owner know about this problem")
+end
+
 -- load from config 
-mki_interact_keyword = minetest.setting_get("interact_keyword") or minetest.chat_send_all("No key word found. Please let the server owner know about this problem")
-mki_interact_keyword_spanish = minetest.setting_get("interact_keyword_spanish") or mki_interact_keyword
-mki_interact_keyword_french = minetest.setting_get("interact_keyword_french") or mki_interact_keyword
-mki_interact_keyword_german = minetest.setting_get("interact_keyword_german") or mki_interact_keyword
 local keyword_privs = minetest.string_to_privs(minetest.setting_get("keyword_interact_privs") or "interact,shout")
 local keyword_liveupdate = minetest.setting_getbool("interact_keyword_live_changing") or nil
 local teleport_msg = minetest.setting_get("mki_send_teleport_msg") or "You've been teleported back to spawn due to lacking interact." 
@@ -12,11 +18,7 @@ local mki_notice_enable = minetest.setting_getbool("keyword_notice_on") or true
 
 
 minetest.register_on_chat_message(function(name, message)
-	if string.gsub(message, " ", ""):lower() == mki_interact_keyword
-	or string.gsub(message, " ", ""):lower() == mki_interact_keyword_spanish
-	or string.gsub(message, " ", ""):lower() == mki_interact_keyword_french
-	or string.gsub(message, " ", ""):lower() == mki_interact_keyword_german
-	then
+	if string.gsub(message, " ", ""):lower() == mki_interact_keyword then
 		if minetest.get_player_privs(name).nointeract then
 			local privs = minetest.get_player_privs(name)
 				for priv, state in pairs(keyword_privs,privs) do

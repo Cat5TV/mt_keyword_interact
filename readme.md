@@ -18,7 +18,7 @@ The commands:
 <br>Required privs: basic_privs </p>
 
 Supplements:
-- cron.sh - Call this script from cron to automatically change the server's keyword from the list in keywords.txt
+- cron.sh (Linux) - Call this script from cron to automatically change the server's keyword from the list in keywords.txt
 
 A keyword can be manually set by adding interact_keyword = keyword to minetest.conf
 <h4>For the keyword to work the "nointeract" priv must be granted by default</h4>

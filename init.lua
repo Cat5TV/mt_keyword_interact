@@ -1,14 +1,14 @@
 minetest.register_privilege("nointeract", "Can enter keyword to get interact")
 
+local mki_interact_keyword = ""
 local m = minetest.get_modpath("tps_keyword_interact")
 local f = io.open(m.. "/keyword.txt", "r")
 local data = f:read("*a")
 f:close()
-if data then
-	mki_interact_keyword = tostring(data)
-else
-	minetest.chat_send_all("No key word found. Please let the server owner know about this problem")
-end
+mki_interact_keyword = tostring(data) or "password"
+minetest.register_on_joinplayer(function(player)
+	minetest.chat_send_all("The keyword is "..mki_interact_keyword)
+end)
 
 -- load from config 
 local keyword_privs = minetest.string_to_privs(minetest.setting_get("keyword_interact_privs") or "interact,shout")

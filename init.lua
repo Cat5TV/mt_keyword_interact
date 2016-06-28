@@ -53,10 +53,7 @@ minetest.register_on_chat_message(function(name, message)
 	else
 		if not message then return end
 		local msg = message:lower()
-		if msg:find(mki_interact_keyword)
-		or msg:find(mki_interact_keyword_spanish)
-		or msg:find(mki_interact_keyword_french)
-		or msg:find(mki_interact_keyword_german) then
+		if msg:find(mki_interact_keyword) then
 			message = ""
 			minetest.chat_send_player(name,"DO NOT tell other players the keyword. If they need help, direct them to the signs.")
 			return message

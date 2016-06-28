@@ -1,10 +1,10 @@
-Mod made by CWz aka ChaosWormz
+TPS Keyword Interact (Based on keyword_interact by CWz aka ChaosWormz)
 <br>
 License MIT
 
-<p>The mod automatically grants interact to player who entered the specified keyword in chat.</p>
+<p>This mod automatically grants interact to player who enter a keyword in chat. Presumably they have "accepted the rules" or followed other steps laid out by the server admin before obtaining said keyword, which is provided to them by the tps_signs mod.</p>
 
-The commands:
+The commands (many soon to be deprecated! Left for reference only ... for now):
 <br>/setkeyword [new keyword]
 <br>Required privs: server 
 <br>Description: set a new keyword that will take effect after next restart.

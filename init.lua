@@ -4,11 +4,12 @@ local m = minetest.get_modpath("tps_keyword_interact")
 local f = io.open(m.. "/keyword.txt", "r")
 local data = f:read("*a")
 	f:close()
-mki_interact_keyword = tostring(data)
+local f_keyword = tostring(data)
+	mki_interact_keyword = f_keyword:gsub("^%s*(.-)%s*$", "%1")
 local timer = 0
 minetest.register_globalstep(function(dtime)
 	timer = timer + dtime;
-	if timer >= 60 then
+	if timer >= 6 then
 		local m = minetest.get_modpath("tps_keyword_interact")
 		local f = io.open(m.. "/keyword.txt", "r")
 		local data = f:read("*a")

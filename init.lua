@@ -15,8 +15,8 @@ minetest.register_globalstep(function(dtime)
 		f:close()
 		local f_keyword = tostring(data)
 		mki_interact_keyword = f_keyword:gsub("^%s*(.-)%s*$", "%1")
+		timer = 0
 	end
-	timer = 0
 end)
 
 -- load from config 

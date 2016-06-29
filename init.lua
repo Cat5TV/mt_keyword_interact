@@ -1,6 +1,10 @@
 minetest.register_privilege("nointeract", "Can enter keyword to get interact")
 
-mki_interact_keyword = ""
+local m = minetest.get_modpath("tps_keyword_interact")
+local f = io.open(m.. "/keyword.txt", "r")
+local data = f:read("*a")
+	f:close()
+mki_interact_keyword = tostring(data)
 local timer = 0
 minetest.register_globalstep(function(dtime)
 	timer = timer + dtime;

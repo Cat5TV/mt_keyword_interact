@@ -7,7 +7,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 if [[ $1 == 'random' ]]
 then
-  rand=$(strings /dev/urandom | grep -o '[[:alnum:]]' | head -n 4 | tr '[:upper:]' '[:lower:]' | tr -d '\n'; echo)
+  rand=$(timeout 15s `which strings` /dev/urandom | `which grep` -o '[[:alnum:]]' | `which head` -n 4 | `which tr` '[:upper:]' '[:lower:]' | `which tr` -d '\n'; echo)
   echo $rand > $DIR/keyword.txt
 elif [[ $1 == 'keyword' ]]
 then

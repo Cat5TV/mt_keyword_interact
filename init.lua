@@ -9,7 +9,7 @@ local f_keyword = tostring(data)
 local timer = 0
 minetest.register_globalstep(function(dtime)
 	timer = timer + dtime;
-	if timer >= 6 then
+	if timer >= 60 then
 		local m = minetest.get_modpath("tps_keyword_interact")
 		local f = io.open(m.. "/keyword.txt", "r")
 		local data = f:read("*a")
